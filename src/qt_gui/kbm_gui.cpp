@@ -688,15 +688,14 @@ void KBMSettings::SetMapping(QString input) {
         mappinglist.append(input);
     }
 
-    // Combine keys with a delimiter (e.g., ", ")
-    mapping = mappinglist.join(", ");
+    // Combine keys with a delimiter (e.g., ",")
+    mapping = mappinglist.join(",");
 
     // Set MappingCompleted to true if at least one key is mapped
-    if (mappinglist.size() >= 1) {    // Adjust this condition as needed
+    if (mappinglist.size() >= 1) { // Adjust this condition as needed
         MappingCompleted = true;
     }
 }
-
 
 bool KBMSettings::eventFilter(QObject* obj, QEvent* event) {
     if (event->type() == QEvent::Close) {
