@@ -4,7 +4,6 @@
 #include <QDialog>
 #include "game_info.h"
 
-
 namespace Ui {
 class KBMSettings;
 }
@@ -14,6 +13,22 @@ class KBMSettings : public QDialog {
 public:
     explicit KBMSettings(std::shared_ptr<GameInfoClass> game_info_get, QWidget* parent = nullptr);
     ~KBMSettings();
+    // Platform-specific scan codes
+#ifdef _WIN32
+    const int lctrl = 29;
+    const int rctrl = 57373; // Specific to your system
+    const int lalt = 56;
+    const int ralt = 57400; // Specific to your system
+    const int lshift = 42;
+    const int rshift = 54;
+#else
+    const int lctrl = 29;
+    const int rctrl = 97;
+    const int lalt = 56;
+    const int ralt = 100;
+    const int lshift = 42;
+    const int rshift = 54;
+#endif
 
 private Q_SLOTS:
     void SaveKBMConfig(bool CloseOnSave);
@@ -47,31 +62,8 @@ private:
     QList<QPushButton*> ButtonsList;
     std::string config_id;
     const std::vector<std::string> ControllerInputs = {
-        "cross",        "circle",    "square",      "triangle",    "l1",
-        "r1",           "l2",        "r2",          "l3",
-
-        "r3",           "options",   "pad_up",
-
-        "pad_down",
-
-        "pad_left",     "pad_right", "axis_left_x", "axis_left_y", "axis_right_x",
-        "axis_right_y", "back"};
-
-#ifdef _WIN32
-    int lctrl = 29;
-    int rctrl = 57373;
-    int lalt = 56;
-    int ralt = 57400;
-    int lshift = 42;
-    int rshift = 54;
-#else
-    int lctrl = 29;
-    int rctrl = 97;
-    int lalt = 56;
-    int ralt = 100;
-    int lshift = 42;
-    int rshift = 54;
-#endif
-
+        "cross",       "circle",      "square",       "triangle",     "l1",
+        "r1",          "l2",          "r2",           "l3",           "r3",
+        "options",     "pad_up",      "pad_down",     "pad_left",     "pad_right",
+        "axis_left_x", "axis_left_y", "axis_right_x", "axis_right_y", "back"};
 };
-
