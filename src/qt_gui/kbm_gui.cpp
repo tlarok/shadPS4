@@ -808,7 +808,7 @@ bool KBMSettings::eventFilter(QObject* obj, QEvent* event) {
                 }
                 break;
             case Qt::Key_Alt:
-            if (keyEvent->nativeScanCode() == lalt) { // Left alt
+                if (keyEvent->nativeScanCode() == lalt) { // Left alt
                     keyText = "lalt";
                 } else if (keyEvent->nativeScanCode() == ralt) { // Right alt
                     keyText = "ralt";
