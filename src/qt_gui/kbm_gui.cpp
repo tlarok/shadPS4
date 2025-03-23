@@ -678,17 +678,25 @@ void KBMSettings::CheckMapping(QPushButton*& button) {
 }
 
 void KBMSettings::SetMapping(QString input) {
+    // Check if the maximum combination limit (3) has been reached
     if (mappinglist.size() >= 3) {
-        return;
+        return; // Do not add more keys if the limit is reached
     }
+
+    // Add the key to the list if it's not already there
     if (!mappinglist.contains(input)) {
-        mappinglist.append(input); // Add the key to the list if it's not already there
+        mappinglist.append(input);
     }
-    mapping = mappinglist.join(", "); // Combine keys with a delimiter (e.g., ", ")
-    if (mappinglist.size() >= 1) {   // Adjust this condition as needed
+
+    // Combine keys with a delimiter (e.g., ", ")
+    mapping = mappinglist.join(", ");
+
+    // Set MappingCompleted to true if at least one key is mapped
+    if (mappinglist.size() >= 1) {    // Adjust this condition as needed
         MappingCompleted = true;
     }
 }
+
 
 bool KBMSettings::eventFilter(QObject* obj, QEvent* event) {
     if (event->type() == QEvent::Close) {
