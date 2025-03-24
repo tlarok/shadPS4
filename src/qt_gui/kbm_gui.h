@@ -16,9 +16,9 @@ public:
     // Platform-specific scan codes
 #ifdef _WIN32
     const int lctrl = 29;
-    const int rctrl = 57373; // Specific to your system
+    const int rctrl = 57373;
     const int lalt = 56;
-    const int ralt = 57400; // Specific to your system
+    const int ralt = 57400;
     const int lshift = 42;
     const int rshift = 54;
 #else
