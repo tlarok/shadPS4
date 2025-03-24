@@ -661,17 +661,6 @@ void KBMSettings::CheckMapping(QPushButton*& button) {
         EnableMapping = false;
         EnableMappingButtons();
         timer->stop();
-
-        if (mapping == "lshift" || mapping == "lalt" || mapping == "lctrl" || mapping == "lmeta" ||
-            mapping == "lwin") {
-            modifier = "";
-        }
-
-        if (modifier != "") {
-            button->setText(modifier + ", " + mapping);
-        } else {
-            button->setText(mapping);
-        }
     }
 
     if (MappingTimer <= 0) {
